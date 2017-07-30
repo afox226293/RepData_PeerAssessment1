@@ -154,8 +154,8 @@ time$interval <- str_pad(time$interval, 4, side = c('left'), pad = 0)
 
 # Using gsub to insert a colon to separate hours and minutes
 time$interval <- gsub("(\\d{2})(?=\\d{2})", "\\1:", time$interval, perl = TRUE)
-# Add in an arbitrary date to allow for date_time series manipulation, add seconds after.
 
+# Add in an arbitrary date to allow for date_time series manipulation, add seconds after.
 time <- time %>%
         mutate(date_time = paste('1990/01/01', interval)) %>%
         mutate(date_time = paste(date_time, ':00', sep = ''))

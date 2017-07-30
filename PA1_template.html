@@ -351,8 +351,8 @@ time$interval &lt;- str_pad(time$interval, 4, side = c(&#39;left&#39;), pad = 0)
 
 # Using gsub to insert a colon to separate hours and minutes
 time$interval &lt;- gsub(&quot;(\\d{2})(?=\\d{2})&quot;, &quot;\\1:&quot;, time$interval, perl = TRUE)
-# Add in an arbitrary date to allow for date_time series manipulation, add seconds after.
 
+# Add in an arbitrary date to allow for date_time series manipulation, add seconds after.
 time &lt;- time %&gt;%
         mutate(date_time = paste(&#39;1990/01/01&#39;, interval)) %&gt;%
         mutate(date_time = paste(date_time, &#39;:00&#39;, sep = &#39;&#39;))

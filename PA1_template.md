@@ -148,14 +148,18 @@ I wanted to find a way to convert the interval variable into times, mainly for m
 
 ```r
 # Convert the interval variable into times
+
 # Add leading zeroes with string pad
 time$interval <- str_pad(time$interval, 4, side = c('left'), pad = 0)
+
 # Using gsub to insert a colon to separate hours and minutes
 time$interval <- gsub("(\\d{2})(?=\\d{2})", "\\1:", time$interval, perl = TRUE)
 # Add in an arbitrary date to allow for date_time series manipulation, add seconds after.
+
 time <- time %>%
         mutate(date_time = paste('1990/01/01', interval)) %>%
         mutate(date_time = paste(date_time, ':00', sep = ''))
+
 # Parse to date_time with lubridate package
 time$date_time <- parse_date_time2(time$date_time, orders = 'Ymd HMS')
 ```
@@ -349,7 +353,6 @@ Here we see that the distribution has become more symmetrical with the inclusion
 This is a fairly simple calculation:
 
 ```r
-# Assign one to a variable to allow it to be referenced in the text below...
 summary(per_day_2$total_steps)
 ```
 
